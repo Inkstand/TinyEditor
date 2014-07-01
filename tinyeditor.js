@@ -39,9 +39,7 @@ TINY.editor=function(){
 		h.className=obj.rowclass||'teheader'; p.className=obj.cssclass||'te'; p.style.maxWidth=this.i.width+'px'; p.appendChild(h);
 		for(i;i<l;i++){
 			var id=obj.controls[i];
-			if(id=='n'){
-				h=document.createElement('div'); h.className=obj.rowclass||'teheader'; p.appendChild(h)
-			}else if(id=='|'){
+			if(id=='|'){
 				var d=document.createElement('div'); d.className=obj.dividerclass||'tedivider'; h.appendChild(d)
 			}else if(id=='font'){
 				var sel=document.createElement('select'), fonts=obj.fonts||['Verdana','Arial','Georgia'], fl=fonts.length, x=0;
@@ -91,7 +89,7 @@ TINY.editor=function(){
 			var f=document.createElement('div'); f.className=obj.footerclass||'tefooter';
 			if(obj.toggle){
 				var to=obj.toggle, ts=document.createElement('div');
-				ts.className=to.cssclass||'toggle'; ts.innerHTML=to.text||'source';
+				ts.className=to.cssclass||'toggle button tiny'; ts.innerHTML=to.text||'source';
 				ts.onclick=new Function(this.n+'.toggle(0,this);return false');
 				f.appendChild(ts)
 			}
