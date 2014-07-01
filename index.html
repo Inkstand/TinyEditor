@@ -3,10 +3,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>TinyEditor - JavaScript WYSIWYG Editor</title>
-<!--<link rel="stylesheet" href="style.css" />-->
+<link rel="stylesheet" type="text/css" href="vendor/font-awesome/css/font-awesome.css">
+<link rel="stylesheet" type="text/css" href="vendor/foundation/foundation.min.css">
+<link rel="stylesheet" href="style.css" />
 <script type="text/javascript" src="tinyeditor.js"></script>
 </head>
 <body>
+<i class="fa fa-bold"></i>
 <textarea id="input" style="width:400px; height:200px"></textarea>
 <script type="text/javascript">
 new TINY.editor.edit('editor',{
@@ -14,7 +17,7 @@ new TINY.editor.edit('editor',{
 	width:584,
 	height:175,
 	cssclass:'te',
-	controlclass:'tecontrol',
+	controlclass:'tecontrol button',
 	rowclass:'teheader',
 	dividerclass:'tedivider',
 	controls:['bold','italic','underline','strikethrough','|','subscript','superscript','|',

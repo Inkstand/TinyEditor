@@ -5,31 +5,31 @@ function T$$$(){return document.all?1:0}
 
 TINY.editor=function(){
 	var c=[], offset=-30;
-	c['cut']=[1,'Cut','a','cut',1];
-	c['copy']=[2,'Copy','a','copy',1];
-	c['paste']=[3,'Paste','a','paste',1];
-	c['bold']=[4,'Bold','a','bold'];
-	c['italic']=[5,'Italic','a','italic'];
-	c['underline']=[6,'Underline','a','underline'];
-	c['strikethrough']=[7,'Strikethrough','a','strikethrough'];
-	c['subscript']=[8,'Subscript','a','subscript'];
-	c['superscript']=[9,'Superscript','a','superscript'];
-	c['orderedlist']=[10,'Insert Ordered List','a','insertorderedlist'];
-	c['unorderedlist']=[11,'Insert Unordered List','a','insertunorderedlist'];
-	c['outdent']=[12,'Outdent','a','outdent'];
-	c['indent']=[13,'Indent','a','indent'];
-	c['leftalign']=[14,'Left Align','a','justifyleft'];
-	c['centeralign']=[15,'Center Align','a','justifycenter'];
-	c['rightalign']=[16,'Right Align','a','justifyright'];
-	c['blockjustify']=[17,'Block Justify','a','justifyfull'];
-	c['undo']=[18,'Undo','a','undo'];
-	c['redo']=[19,'Redo','a','redo'];
-	c['image']=[20,'Insert Image','i','insertimage','Enter Image URL:','http://'];
-	c['hr']=[21,'Insert Horizontal Rule','a','inserthorizontalrule'];
-	c['link']=[22,'Insert Hyperlink','i','createlink','Enter URL:','http://'];
-	c['unlink']=[23,'Remove Hyperlink','a','unlink'];
-	c['unformat']=[24,'Remove Formatting','a','removeformat'];
-	c['print']=[25,'Print','a','print'];
+    c['cut']=[1,'Cut','a','cut',1,0,'cut'];
+    c['copy']=[2,'Copy','a','copy',1,0,'copy'];
+    c['paste']=[3,'Paste','a','paste',1,0,'paste'];
+    c['bold']=[4,'Bold','a','bold',0,0,'bold'];
+    c['italic']=[5,'Italic','a','italic',0,0,'italic'];
+    c['underline']=[6,'Underline','a','underline',0,0,'underline'];
+    c['strikethrough']=[7,'Strikethrough','a','strikethrough',0,0,'strikethrough'];
+    c['subscript']=[8,'Subscript','a','subscript',0,0,'subscript'];
+    c['superscript']=[9,'Superscript','a','superscript',0,0,'superscript'];
+    c['orderedlist']=[10,'Insert Ordered List','a','insertorderedlist',0,0,'list-ol'];
+    c['unorderedlist']=[11,'Insert Unordered List','a','insertunorderedlist',0,0,'list-ul'];
+    c['outdent']=[12,'Outdent','a','outdent',0,0,'outdent'];
+    c['indent']=[13,'Indent','a','indent',0,0,'indent'];
+    c['leftalign']=[14,'Left Align','a','justifyleft',0,0,'align-left'];
+    c['centeralign']=[15,'Center Align','a','justifycenter',0,0,'align-center'];
+    c['rightalign']=[16,'Right Align','a','justifyright',0,0,'align-right'];
+    c['blockjustify']=[17,'Block Justify','a','justifyfull',0,0,'align-justify'];
+    c['undo']=[18,'Undo','a','undo',0,0,'undo'];
+    c['redo']=[19,'Redo','a','redo',0,0,'repeat'];
+    c['image']=[20,'Insert Image','i','insertimage','Enter Image URL:','http://','image'];
+    c['hr']=[21,'Insert Horizontal Rule','a','inserthorizontalrule',0,0,'minus'];
+    c['link']=[22,'Insert Hyperlink','i','createlink','Enter URL:','http://','chain'];
+    c['unlink']=[23,'Remove Hyperlink','a','unlink',0,0,'chain-broken'];
+    c['unformat']=[24,'Remove Formatting','a','removeformat',0,0,'eraser'];
+    c['print']=[25,'Print','a','print',0,0,'print'];
 	function edit(n,obj){
 		this.n=n; window[n]=this; this.t=T$(obj.id); this.obj=obj; this.xhtml=obj.xhtml;
 		var p=document.createElement('div'), w=document.createElement('div'), h=document.createElement('div'),
@@ -71,7 +71,7 @@ TINY.editor=function(){
 				}
 				h.appendChild(sel)
 			}else if(c[id]){
-				var div=document.createElement('div'), x=c[id], func=x[2], ex, pos=x[0]*offset;
+				var div=document.createElement('div'), fa=document.createElement('i'), x=c[id], func=x[2], ex, pos=x[0]*offset;
 				div.className=obj.controlclass;
 				div.style.backgroundPosition='0px '+pos+'px';
 				div.title=x[1];
@@ -79,6 +79,8 @@ TINY.editor=function(){
 				div.onclick=new Function(this.n+(id=='print'?'.print()':ex));
 				div.onmouseover=new Function(this.n+'.hover(this,'+pos+',1)');
 				div.onmouseout=new Function(this.n+'.hover(this,'+pos+',0)');
+                fa.className='fa fa-'+c[id][6];
+                div.appendChild(fa);
 				h.appendChild(div);
 				if(this.ie){div.unselectable='on'}
 			}

@@ -3,10 +3,6 @@ body {margin:0; font:12px Verdana,Arial}
 .te {border:1px solid #bbb; padding:0 1px 1px; font:12px Verdana,Arial; margin:25px}
 .te iframe {border:none}
 .teheader {border-bottom:1px solid #bbb; background:url(images/header-bg.gif) repeat; padding-top:1px}
-.teheader select {float:left; margin-top:5px}
-.tefont {margin-left:12px}
-.tesize {margin:0 3px}
-.testyle {margin-right:12px}
 .tedivider {display: inline-block; width:1px; height:30px; background:#ccc}
 .tecontrol {display: inline-block; width:34px; height:30px; cursor:pointer; background-image:url(images/icons.png)}
 .tecontrol:hover {background-color:#fff; background-position:30px 0}
@@ -15,3 +11,53 @@ body {margin:0; font:12px Verdana,Arial}
 .toggle:hover {background-color:#fff}
 .resize {float:right; height:32px; width:32px; background:url(images/resize.gif) 15px 15px no-repeat; cursor:s-resize}
 #editor {cursor:text; margin:10px}
+
+.te, .teheader {
+    padding:0;   
+}
+.teheader:after {
+    content:'.';
+    clear: both;
+    display: block;
+    height: 0px;
+    text-indent:-99999px;
+}
+.teheader select {
+    width:auto;
+    float:left;
+    height:26px;
+    margin-top:2px;
+}
+.tecontrol {
+    display: inline-block;
+}
+.button {
+    padding: 7px;
+    width: 30px;
+    height: 30px;
+    margin: 0;
+    display:block;
+    float:left;
+    background-color:#fff;
+}
+.button i {
+    color:#333;   
+}
+.button:hover,
+.button:focus {
+    background-color:#333;
+}
+.button:hover i,
+.button:focus i {
+    color:#fff;
+}
+
+.tecontrol.button i {
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+}
+.tedivider {
+    float:left;   
+    background:#333;
+}
